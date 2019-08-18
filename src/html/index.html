@@ -2,10 +2,21 @@
 <html>
 <head>
    <title>Table Tennis</title>
+   <style>
+      #canvas {
+         width: 100%;
+         image-rendering: optimizeSpeed;
+         image-rendering: -moz-crisp-edges;
+         image-rendering: -webkit-optimize-contrast;
+         image-rendering: -o-crisp-edges;
+         image-rendering: pixelated;
+         -ms-interpolation-mode: nearest-neighbor;
+      }
+   </style>
 </head>
 <body>
    <h1>Hello World</h1>
-   <canvas id="canvas" width="640" height="360"></canvas>
+   <canvas id="canvas" width="256" height="144"></canvas>
    <script src="./table-tennis.js"></script>
 </body>
 </html>
