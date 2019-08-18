@@ -20,3 +20,15 @@ document.body.onload = function() {
       }
    }
 };
+
+const fullscreenBtn = document.getElementById('fullscreenBtn');
+
+if (fullscreenBtn) {
+   fullscreenBtn.onclick = function() {
+      const canvas = document.getElementById('canvas');
+
+      if (canvas) {
+         canvas.requestFullscreen();
+      }
+   };
+}
