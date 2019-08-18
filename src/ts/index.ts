@@ -32,3 +32,19 @@ if (fullscreenBtn) {
       }
    };
 }
+
+function tick() {
+   const gamepads = navigator.getGamepads(),
+         gamepadLabel = document.getElementById('gamepadLabel');
+
+   if (gamepads.length && gamepadLabel) {
+      const gamepad = gamepads[0];
+
+      if (gamepad) {
+         gamepadLabel.innerText = gamepad.id;
+      }
+   }
+
+   window.requestAnimationFrame(() => tick());
+ }
+ tick();
