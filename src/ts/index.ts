@@ -1,50 +1,20 @@
-import Example from './Example';
-
-const example = new Example();
-
-console.log(example.doSomething());
+import GameManager from './GameManager';
 
 document.body.onload = function() {
-   const canvas = document.getElementById('canvas') as HTMLCanvasElement;
+   const fullscreenBtn = document.getElementById('fullscreenBtn'),
+         canvas = document.getElementById('canvas');
 
-   if (canvas) {
-      const ctx = canvas.getContext('2d');
-
-      if (ctx) {
-         ctx.fillStyle = 'rgb(200, 100, 0)';
-         ctx.fillRect(0, 0, 640, 360);
-         ctx.fillStyle = 'rgb(200, 0, 0)';
-         ctx.fillRect(10, 10, 50, 50);
-         ctx.fillStyle = 'rgba(0, 0, 200, 0.5)';
-         ctx.fillRect(30, 30, 50, 50);
-      }
+   if (!canvas) {
+      throw new Error('Could not get canvas');
    }
-};
 
-const fullscreenBtn = document.getElementById('fullscreenBtn');
-
-if (fullscreenBtn) {
-   fullscreenBtn.onclick = function() {
-      const canvas = document.getElementById('canvas');
-
-      if (canvas) {
+   if (fullscreenBtn) {
+      fullscreenBtn.onclick = () => {
          canvas.requestFullscreen();
-      }
-   };
-}
-
-function tick() {
-   const gamepads = navigator.getGamepads(),
-         gamepadLabel = document.getElementById('gamepadLabel');
-
-   if (gamepads.length && gamepadLabel) {
-      const gamepad = gamepads[0];
-
-      if (gamepad) {
-         gamepadLabel.innerText = gamepad.id;
-      }
+      };
    }
 
-   window.requestAnimationFrame(() => tick());
- }
- tick();
+   const gameManager = new GameManager(canvas as HTMLCanvasElement);
+
+   gameManager.startGame();
+};
