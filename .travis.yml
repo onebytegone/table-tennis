@@ -3,7 +3,6 @@ node_js:
    - "node" # Latest node version
    - "lts/*" # Latest LTS version
    - "10"
-   - "8"
    - "8.10"
 
 before_install: if [[ `npm -v` != 6* ]]; then npm i -g npm@6.4.1; fi
@@ -13,8 +12,20 @@ script:
    - npm --version
    - grunt standards
    - commitlint-travis
-   - grunt clean build
    - npm run test:ci
+   - grunt clean build --env=prd
+
+deploy:
+   provider: pages
+   local-dir: dist
+   skip-cleanup: true
+   github-token: $GITHUB_TOKEN # Set in the settings page of the repository, as a secure variable
+   committer-from-gh: true
+   keep-history: true
+   on:
+      branch: master
+      node: '8.10'
+
 
 # For code coverage:
 after_success:
