@@ -42,7 +42,7 @@
       "grunt-contrib-watch": "1.1.0",
       "grunt-eslint": "21.0.0",
       "grunt-exec": "3.0.0",
-      "jsdom": "13.0.0",
+      "jsdom": "16.5.0",
       "jsdom-global": "3.0.2",
       "mocha": "5.2.0",
       "nyc": "13.3.0",
